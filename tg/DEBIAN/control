@@ -1,0 +1,9 @@
+Package: tg
+Version: 0.1
+Section: custom
+Priority: optional
+Architecture: amd64
+Essential: no
+Installed-Size: 1024
+Maintainer: sebastian lopez
+Description: Tardigrade. Bookmarks for commands.

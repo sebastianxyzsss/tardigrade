@@ -1,0 +1,31 @@
+group1 ^ random things 1:
+  group12:
+  - some thing ^ something
+  - go runn com .
+  group14:
+  - ls -la ^ list all files @ls @listing-files
+  - pwd
+  - echo hi there ^ echoing something
+group2:
+  group21:
+  - comm21 11 ^ @com2
+  group22:
+  - comm12 11
+  - comm12 12
+  - com12 2 22 ^ @com2
+  - com12 2 23 ^ @com2
+  - com12 2 24 ^ @com2
+  - com12 2 25 ^ @com2
+  - com12 2 26 ^ @com3
+  - com12 2 27 ^ @com3
+  - com12 2 28
+  - com12 2 29
+  group23:
+  - (dummy)
+  comm24 <> ^ this comm 24 has variables @comm @com2:
+  - one
+  - two
+  comm25 <> and <> ^ this cm 25 has several variables @comm:
+  - a1, b1
+  - a2, b2
+  - a2, b2, cc
