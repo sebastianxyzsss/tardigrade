@@ -35,7 +35,7 @@ group2:
 ```
 
 ![usage sample](https://s11.gifyu.com/images/SQ6mR.gif)
-example gif
+Go here to see the example usage in a gif if github cannot display it: (https://s11.gifyu.com/images/SQ6mR.gif)
 
 ## More Description
 
