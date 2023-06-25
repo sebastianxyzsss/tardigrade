@@ -35,6 +35,7 @@ group2:
 ```
 
 ![usage sample](https://s11.gifyu.com/images/SQ6mR.gif)
+example gif
 
 ## More Description
 
@@ -76,7 +77,8 @@ Tardigrade has its own history file called targdihistory.yml. Its a tardicontent
 
 ## Thanks
 
-This project relies in great libraries like kong, viper, and many others. But the main library that is relying on are the charm libraries, lipgloss, gum. Mainly gum (https://github.com/charmbracelet/gum), I copied all the filter section to customize it to tardigrade' needs.
+This project relies in great libraries like kong, viper, and many others. But the main library that is relying on are the charm libraries, lipgloss, gum. Mainly gum (https://github.com/charmbracelet/gum), I copied all the filter section to customize it to tardigrade's needs.
+
 ## Installation
 
 As of now, there are only two ways to install. I will work on the installation process in the next few months so it becomes easier to more users.
