@@ -9,7 +9,7 @@ Tardigrade
 
 Tardigrade is a bookmark tool for commands. Tardigrade lets you easily navigate throughout dozens and dozens of commands. Tardigrade is a command line tool that assists remembering and retrieving any type of commands. One can store commands that had been used before. The commands are saved in a hierarchical and organized way that is easy to retrieve.
 
-## usage example
+## Usage example
 
 sample yaml file:
 ```yaml
@@ -89,7 +89,8 @@ make build
 ```
 and the executable will be inside the build directory, then copy the path of the executable to the user path.
 
-Second, install by using the deb package from the release section. Download the deb package: https://github.com/sebastianxyzsss/tardigrade/releases
+Second, install by using the deb package from the release section. Download the deb package: (https://github.com/sebastianxyzsss/tardigrade/releases)
+
 to install: 
 ```
 sudo dpkg -i tg.<version>.deb
