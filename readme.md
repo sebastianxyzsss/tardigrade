@@ -89,10 +89,10 @@ make build
 ```
 and the executable will be inside the build directory, then copy the path of the executable to the user path.
 
-Second, install by using the deb package. Download the deb package from here: 
+Second, install by using the deb package from the release section. Download the deb package: https://github.com/sebastianxyzsss/tardigrade/releases
 to install: 
 ```
-sudo dpkg -i tg.deb
+sudo dpkg -i tg.<version>.deb
 ```
 then, add this script to .bashrc or zshrc:
 ```bash
