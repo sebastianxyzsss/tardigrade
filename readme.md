@@ -34,9 +34,15 @@ group2:
   - a2, b2 # will convert to echo a2 and b2
 ```
 
-![usage sample](https://s12.gifyu.com/images/SQaLw.gif)
+- normal usage
 
-Here is an older example. Go here to see the example usage in a gif if github cannot display it: (https://s11.gifyu.com/images/SQ6mR.gif)
+![usage sample](https://s11.gifyu.com/images/SQas7.gif)
+
+- combo usage
+
+![usage sample](https://s11.gifyu.com/images/SQasj.gif)
+
+- here is an older example of usage. Go here to see the example usage in a gif if github cannot display it: (https://s11.gifyu.com/images/SQ6mR.gif)
 
 ## More Description
 
