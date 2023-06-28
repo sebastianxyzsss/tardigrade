@@ -14,7 +14,6 @@ import (
 )
 
 type Cli struct {
-	LogSwap   bool     `short:"l" help:"Swaps log level, info to debug"`
 	FlatParse bool     `short:"f" help:"Flat parse mode, instead of hierarchical parse"`
 	New       bool     `short:"n" help:"Add new user home content file"`
 	Init      bool     `short:"i" help:"Add new content file in local directory"`
@@ -45,10 +44,6 @@ func main() {
 func getOptions(object interface{}) {
 	cli, ok := object.(*Cli)
 	if ok {
-		if cli.LogSwap {
-			logger.SwapLogLevel()
-			ll.Debug().Msg("log level swapped")
-		}
 		if cli.FlatParse {
 			ll.Debug().Msg("flat parse mode enabled")
 			globals.FlatParse = true
@@ -110,8 +105,9 @@ func createSettings() (*globals.Settings, error) {
 		viper.SetDefault("settings", globals.Settings{
 			Height:           11,
 			IndicatorStyle:   "80",
-			FooterKeyMaxSize: 12,
-			HistorySize:      10,
+			FooterKeyMaxSize: 16,
+			HistorySize:      11,
+			LogLevel:         "info",
 		})
 
 		viper.WriteConfig()
@@ -140,6 +136,12 @@ func runTardigrade(strsToRead []string) {
 
 	globals.ChildKeyMaxSize = settings.FooterKeyMaxSize
 	globals.HistorySize = settings.HistorySize
+
+	if settings.LogLevel == "debug" {
+		logger.SetLogLevelDebug()
+	} else {
+		logger.SetLogLevelInfo()
+	}
 
 	yamlAsMap := reader.GetRawMapContent(strsToRead)
 

@@ -18,6 +18,7 @@ type Settings struct {
 	HistorySize      int    `json:"historysize"`
 	IndicatorStyle   string `json:"indicatorstyle"`
 	FooterKeyMaxSize int    `json:"footerkeymaxsize"`
+	LogLevel         string `json:"loglevel"`
 }
 
 var ChildKeyMaxSize int = 8

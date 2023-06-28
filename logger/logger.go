@@ -31,6 +31,14 @@ func SetupLog() *zerolog.Logger {
 	return &log
 }
 
+func SetLogLevelInfo() {
+	zerolog.SetGlobalLevel(zerolog.InfoLevel)
+}
+
+func SetLogLevelDebug() {
+	zerolog.SetGlobalLevel(zerolog.DebugLevel)
+}
+
 func SwapLogLevel() {
 	if zerolog.GlobalLevel() == zerolog.DebugLevel {
 		zerolog.SetGlobalLevel(zerolog.InfoLevel)
