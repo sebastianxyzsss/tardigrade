@@ -9,9 +9,9 @@ Tardigrade
 
 Tardigrade is a bookmark tool for commands. Tardigrade lets you easily navigate throughout dozens and dozens of commands. Tardigrade is a command line tool that assists remembering and retrieving any type of commands. One can store commands that had been used before. The commands are saved in a hierarchical and organized way that is easy to retrieve.
 
-## Usage example
+## Usage examples
 
-- normal usage, using tardigrade then finding and calling a command
+- normal usage, using tardigrade to find and call a command
 
 ![usage sample](https://s11.gifyu.com/images/SQas7.gif)
 
@@ -47,15 +47,21 @@ group2:
 
 ![usage sample](https://s11.gifyu.com/images/SQaxE.gif)
 
+## More Description
+
+If you have ever copied a bunch of commands in different notes or emails or readmes; and a month later or a year later or 3 years later; you need to look for that command; this tool will help you remember and reqtrieve them quickly. With Tardigrade all commands can be copied to a file in your user home directory, so all the commands that you have ever used, are in one place, and they can be easily retrieved from that file. But not stopping there, following what other tools do. The commands can be read from your user home directory and also from the current local directory where the Tardigrade app is called from and Tardigrade will combine all the keywords and commands from both directories. This concept can help any user, to personalize with commands to remember based on a directory. It can also help teams and projects, to remember their most used commands. Tardigrade works in most terminals.
+
+## More usage examples
+
 - going to another directory using tardigrade
 
 ![usage sample](https://s12.gifyu.com/images/SQaxg.gif)
 
+- filtering example
+
+![usage sample](https://s11.gifyu.com/images/SQaHH.gif)
+
 - here is an older example of usage. Go here to see the example usage in a gif if github cannot display it: (https://s11.gifyu.com/images/SQ6mR.gif)
-
-## More Description
-
-If you have ever copied a bunch of commands in different notes or emails or readmes; and a month later or a year later or 3 years later; you need to look for that command; this tool will help you remember and reqtrieve them quickly. With Tardigrade all commands can be copied to a file in your user home directory, so all the commands that you have ever used, are in one place, and they can be easily retrieved from that file. But not stopping there, following what other tools do. The commands can be read from your user home directory and also from the current local directory where the Tardigrade app is called from and Tardigrade will combine all the keywords and commands from both directories. This concept can help any user, to personalize with commands to remember based on a directory. It can also help teams and projects, to remember their most used commands. Tardigrade works in most terminals.
 
 ## Tutorial
 
