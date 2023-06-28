@@ -34,8 +34,9 @@ group2:
   - a2, b2 # will convert to echo a2 and b2
 ```
 
-![usage sample](https://s11.gifyu.com/images/SQ6mR.gif)
-Go here to see the example usage in a gif if github cannot display it: (https://s11.gifyu.com/images/SQ6mR.gif)
+![usage sample](https://s12.gifyu.com/images/SQaLw.gif)
+
+Here is an older example. Go here to see the example usage in a gif if github cannot display it: (https://s11.gifyu.com/images/SQ6mR.gif)
 
 ## More Description
 
