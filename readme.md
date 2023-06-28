@@ -11,7 +11,12 @@ Tardigrade is a bookmark tool for commands. Tardigrade lets you easily navigate 
 
 ## Usage example
 
-sample yaml file:
+- normal usage, using tardigrade then finding and calling a command
+
+![usage sample](https://s11.gifyu.com/images/SQas7.gif)
+
+- sample yaml file:
+
 ```yaml
 group1:
   group12:
@@ -34,13 +39,17 @@ group2:
   - a2, b2 # will convert to echo a2 and b2
 ```
 
-- normal usage
-
-![usage sample](https://s11.gifyu.com/images/SQas7.gif)
-
-- combo usage
+- combo usage, command with several options
 
 ![usage sample](https://s11.gifyu.com/images/SQasj.gif)
+
+- navigation, notice the footer description and options from groups
+
+![usage sample](https://s11.gifyu.com/images/SQaxE.gif)
+
+- going to another directory using tardigrade
+
+![usage sample](https://s12.gifyu.com/images/SQaxg.gif)
 
 - here is an older example of usage. Go here to see the example usage in a gif if github cannot display it: (https://s11.gifyu.com/images/SQ6mR.gif)
 
