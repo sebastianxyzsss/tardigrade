@@ -1,3 +1,5 @@
+version = 0.0.2
+
 .PHONY: build 
 
 build:
@@ -13,4 +15,4 @@ debiancp: build
 
 debian: debiancp
 	dpkg-deb --build tg
-	mv tg.deb build
+	mv tg.deb build/tg.$(version).deb
