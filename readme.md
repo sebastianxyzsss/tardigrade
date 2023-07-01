@@ -105,19 +105,43 @@ This project relies in great libraries like kong, viper, and many others. But th
 
 As of now, there are only two ways to install. I will work on the installation process in the next few months so it becomes easier to more users.
 
-First, via go. Download the repo and run:
+
+### installation via go
+
+Download the repo and run:
 ```
 make build 
 ```
 and the executable will be inside the build directory, then copy the path of the executable to the user path.
 
-Second, install by using the deb package from the release section. Download the deb package: (https://github.com/sebastianxyzsss/tardigrade/releases)
+### installation via deb package
+
+Install by using the deb package from the release section. Download the deb package: (https://github.com/sebastianxyzsss/tardigrade/releases)
 
 to install: 
 ```
 sudo dpkg -i tg.<version>.deb
 ```
-then, add this script to .bashrc or zshrc:
+
+### installation via ppa repository
+
+to setup ppa repository:
+```
+curl -s --compressed "https://sebastianxyzsss.github.io/seb_ppa/KEY.gpg" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/seb_ppa.gpg >/dev/null
+sudo curl -s --compressed -o /etc/apt/sources.list.d/seb_list_file.list "https://sebastianxyzsss.github.io/seb_ppa/seb_list_file.list"
+sudo apt update
+```
+
+then install using apt:
+
+```
+sudo apt install tg
+```
+
+### extra script
+
+This script is a big plus. It makes Tardigrade run the command instead of just printing the command so Tardigrade is more useful used this way. Add this script to .bashrc or zshrc:
+
 ```bash
 tt() {
   echo ----------------------------------------------------
@@ -128,4 +152,3 @@ tt() {
   eval ${_resultcomm}
 }
 ```
-** the script makes Tardigrade run the command instead of just printing the command so Tardigrade is more useful used this way.
