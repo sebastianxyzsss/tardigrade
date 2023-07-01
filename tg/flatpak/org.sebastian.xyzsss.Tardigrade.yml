@@ -1,0 +1,13 @@
+app-id: org.sebastian.xyzsss.Tardigrade
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: tg
+modules:
+  - name: tg
+    buildsystem: simple
+    build-commands:
+      - install -D tg /app/bin/tg
+    sources:
+      - type: file
+        path: build/tg
