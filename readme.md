@@ -67,6 +67,8 @@ If you have ever copied a bunch of commands in different notes or emails or read
 
 After installation. Type "tg" (or "tt" if the command was added to an rc file). Tardigrade will show all the main options in a menu. In each menu, the user can go up and down. If the user presses right or presses enter then the group or command will be chosen. If a command is chosen then the command will run (or print) and tardigrade will end. If the user presses left then the menu will go back to its parent.
 
+Explaiing the tool does not do it justice; you really have to start using it to see the enhancement it brings to coding in the terminal.
+
 Another feature is filtering, instead of going up and down one can start typing the a part of the command and the filter will show only the commands that match.
 
 Another feature is Tardigrade can be started in flat mode and in tag mode to search keywords only in tags and in all mode to search keywords in either the command, description or tags.
