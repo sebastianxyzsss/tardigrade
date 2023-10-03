@@ -4,7 +4,7 @@ version = 0.0.3
 
 build:
 	mkdir -p build
-	go build -o build/tg main.go
+	CGO_ENABLED=0 go build -o build/tg main.go
 
 clean:
 	rm -rf build
