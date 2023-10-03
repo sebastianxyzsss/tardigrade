@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 
 	"github.com/alecthomas/kong"
+	"github.com/sebastianxyzsss/tardigrade/action"
 	"github.com/sebastianxyzsss/tardigrade/globals"
 	"github.com/sebastianxyzsss/tardigrade/logger"
 	"github.com/sebastianxyzsss/tardigrade/parser"
@@ -14,13 +15,13 @@ import (
 )
 
 type Cli struct {
-	FlatParse bool     `short:"f" help:"Flat parse mode, instead of hierarchical parse"`
-	New       bool     `short:"n" help:"Add new user home content file"`
-	Init      bool     `short:"i" help:"Add new content file in local directory"`
-	Tags      bool     `short:"t" help:"Make strings in command, Tag filters, default"`
-	All       bool     `short:"a" help:"Make strings in command, filter Anything, default"`
-	Files     bool     `short:"s" help:"Make strings in command, files to read, default"`
-	Paths     []string `arg:"" optional:"" name:"path" help:"Paths to remove." type:"path"`
+	Init      bool     `short:"i" help:"Add new content file in local directory, eg. -i"`
+	FlatParse bool     `short:"f" help:"Flat parse mode, instead of hierarchical parse, eg. -f"`
+	Tags      bool     `short:"t" help:"filter tags that contains string, eg. -t sometag"`
+	All       bool     `short:"a" help:"filter Anything that contains string, eg. -a somekeyword"`
+	Copy      bool     `short:"c" help:"include flag to only copy to clipboard, for linux install xclip or xsel, eg. -c"`
+	Files     bool     `short:"s" help:"files to read, including urls, separated by spaces, eg. -s file1.yml /some/dir/file2.yml /https://example.com/file3.yml"`
+	Paths     []string `arg:"" optional:"" name:"path" help:"extra strings, could be files, tags, keywords. optional" type:"path"`
 }
 
 var CLI Cli
@@ -68,14 +69,14 @@ func getOptions(object interface{}) {
 				globals.FilterStrings = append(globals.FilterStrings, filepath.Base(path))
 			}
 		}
+		if cli.Copy {
+			ll.Info().Msg("will only copy to clipboard")
+			globals.RunMode = "copy-paste"
+			globals.RunAction = action.CopyPaster{}
+		}
 		if cli.Init {
 			ll.Info().Msg("creating new local file")
 			reader.CreateNewLocalContentFile()
-			os.Exit(0)
-		}
-		if cli.New {
-			ll.Info().Msg("creating new user home file")
-			reader.CreateNewUserContentFile()
 			os.Exit(0)
 		}
 	} else {
@@ -126,7 +127,6 @@ func createSettings() (*globals.Settings, error) {
 }
 
 func runTardigrade(strsToRead []string) {
-	ll.Debug().Msg("-------------------------------------------------------- tardigrade ..")
 
 	settings, err := createSettings()
 	if err != nil {
@@ -142,6 +142,10 @@ func runTardigrade(strsToRead []string) {
 	} else {
 		logger.SetLogLevelInfo()
 	}
+
+	ll.Debug().Msg("-------------------------------------------------------- tardigrade")
+
+	reader.CreateNewUserContentFile()
 
 	yamlAsMap := reader.GetRawMapContent(strsToRead)
 

@@ -3,7 +3,10 @@ package reader
 import (
 	"errors"
 	"fmt"
+	"io"
+	"net/http"
 	"os"
+	"strings"
 
 	"github.com/sebastianxyzsss/tardigrade/globals"
 	"github.com/sebastianxyzsss/tardigrade/logger"
@@ -46,6 +49,39 @@ func GetFileAsString(filePath string) *string {
 
 	yamlContentStr := string(yamlContent)
 
+	return &yamlContentStr
+}
+
+func GetHttpRequestAsString(urlString string) *string {
+
+	url := strings.Replace(urlString, "/https://", "https://", -1)
+	url = strings.Replace(url, "/http://", "http://", -1)
+
+	ll.Debug().Msg("url with content: " + url)
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		ll.Debug().Msg("unable to read url: " + err.Error())
+		return nil
+	}
+
+	req.Header.Set("Accept", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		ll.Debug().Msg("unable to get url response: " + err.Error())
+		return nil
+	}
+
+	defer resp.Body.Close()
+
+	b, err := io.ReadAll(resp.Body)
+	if err != nil {
+		ll.Debug().Msg("unable to parse response: " + err.Error())
+	}
+
+	yamlContentStr := string(b)
 	return &yamlContentStr
 }
 
@@ -112,8 +148,19 @@ func appendFileListContent(m *map[interface{}]interface{}, filesToRead []string)
 	if filesToRead == nil {
 		return m
 	}
+
 	for _, fileToRead := range filesToRead {
-		yamlContent := GetFileAsString(fileToRead)
+
+		ll.Debug().Msg("reading file (or url): " + fileToRead)
+
+		var yamlContent *string = nil
+
+		if strings.Contains(fileToRead, "/http") {
+			yamlContent = GetHttpRequestAsString(fileToRead)
+		} else {
+			yamlContent = GetFileAsString(fileToRead)
+		}
+
 		if yamlContent == nil {
 			ll.Info().Msg("unable to get file content for: " + fileToRead)
 			continue
@@ -183,15 +230,19 @@ func WriteToFile(fileName string, content string) {
 }
 
 func CreateNewUserContentFile() {
-	ll.Info().Msg("attempting creating user home file")
-
 	userDirName := getUserDirName()
 
-	tardiContentDirName := userDirName + "/" + TardiContentDir
-	tardiContentFileName := userDirName + "/" + TardiContent
-	dummyGroupPrefix := "userhome "
+	if CheckContentFileExists(userDirName) {
+		ll.Debug().Msg("> userhome content file - already Exists")
+	} else {
+		ll.Debug().Msg("> userhome content file - Does Not exist, creating new one")
 
-	CreateNewContentFile(tardiContentDirName, tardiContentFileName, dummyGroupPrefix)
+		tardiContentDirName := userDirName + "/" + TardiContentDir
+		tardiContentFileName := userDirName + "/" + TardiContent
+		dummyGroupPrefix := "userhome "
+
+		CreateNewContentFile(tardiContentDirName, tardiContentFileName, dummyGroupPrefix)
+	}
 }
 
 func CreateNewLocalContentFile() {
@@ -200,6 +251,20 @@ func CreateNewLocalContentFile() {
 	dummyGroupPrefix := "local-"
 
 	CreateNewContentFile(TardiContentDir, TardiContent, dummyGroupPrefix)
+}
+
+func CheckContentFileExists(dir string) bool {
+	tardiContentDirName := dir + "/" + TardiContentDir
+	tardiContentFileName := dir + "/" + TardiContent
+
+	if _, err := os.Stat(tardiContentDirName); os.IsNotExist(err) {
+		return false
+	}
+	if _, err := os.Stat(tardiContentFileName); os.IsNotExist(err) {
+		return false
+	}
+
+	return true
 }
 
 func CreateNewContentFile(tardiContentDirName string, tardiContentFileName string, dummyGroupPrefix string) {
@@ -233,7 +298,7 @@ func CreateNewContentFile(tardiContentDirName string, tardiContentFileName strin
 		return
 	}
 
-	ll.Info().Msg("created file")
+	ll.Debug().Msg("created file")
 }
 
 func appendMap(m1 *map[interface{}]interface{}, m2 *map[interface{}]interface{}) *map[interface{}]interface{} {

@@ -1,5 +1,7 @@
 package globals
 
+import "github.com/sebastianxyzsss/tardigrade/action"
+
 type FilterType int
 
 const (
@@ -12,6 +14,10 @@ const (
 var FilterAction FilterType = FilterNone
 
 var FilterStrings []string = make([]string, 0)
+
+var RunMode string = "print-command"
+
+var RunAction action.Action = action.Printer{}
 
 type Settings struct {
 	Height           int    `json:"height"`

@@ -102,9 +102,9 @@ func (o Options) Run(element *parser.Element) (*parser.Element, error) {
 	if len(m.selected) > 0 {
 		for k := range m.selected {
 			if isTTY {
-				fmt.Println(k)
+				globals.RunAction.Execute(k)
 			} else {
-				fmt.Println(Strip(k))
+				globals.RunAction.Execute(Strip(k))
 			}
 		}
 	} else if len(m.matches) > m.cursor && m.cursor >= 0 {
@@ -124,7 +124,7 @@ func (o Options) Run(element *parser.Element) (*parser.Element, error) {
 				if parser.DoesElementHaveCommandTag(chosen.Parent) {
 					content = utils.ReplaceContentWithChoices(chosen.Parent.Content, content)
 				}
-				fmt.Println(content)
+				globals.RunAction.Execute(content)
 			}
 		} else {
 			content := Strip(m.matches[index].Str)
@@ -141,7 +141,7 @@ func (o Options) Run(element *parser.Element) (*parser.Element, error) {
 				if parser.DoesElementHaveCommandTag(chosen.Parent) {
 					content = utils.ReplaceContentWithChoices(chosen.Parent.Content, content)
 				}
-				fmt.Println(content)
+				globals.RunAction.Execute(content)
 			}
 		}
 	}

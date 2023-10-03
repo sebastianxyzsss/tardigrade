@@ -20,6 +20,7 @@ import (
 	"github.com/charmbracelet/lipgloss"
 	"github.com/mattn/go-runewidth"
 	"github.com/sahilm/fuzzy"
+	"github.com/sebastianxyzsss/tardigrade/globals"
 	"github.com/sebastianxyzsss/tardigrade/parser"
 )
 
@@ -62,7 +63,7 @@ func (m model) View() string {
 	var s strings.Builder
 
 	// footer
-	description := m.headerStyle.Render("DESC:") + " "
+	description := m.headerStyle.Render("MODE:") + " " + globals.RunMode + " " + m.headerStyle.Render("DESC:") + " "
 	footer := m.headerStyle.Render("OPTS:") + m.indicatorStyle.Render(" | ")
 	index := 0
 	content2 := ""
